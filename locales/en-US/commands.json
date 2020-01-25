@@ -1,0 +1,116 @@
+{
+  "appeal": {
+    "notbanned": "Looks like you are not on my ban list.",
+    "timedOut": "Prompt timed out!",
+    "want": "Do you want to appeal case **${{caseID}}** for \\`${{caseReason}}\\`? (\\`yes\\`/\\`no\\`)",
+    "sendProofs": "Please send links of photos/videos (photos better) demonstrating that you're not guilty. Please submit each link separated by a comma and and a space. Ex: Link1, Link2, Link3, Link4 You may only submit up to 4 proof links",
+    "submit": "This is a preview of the appeal. Do you want to submit it? (`yes`/`no`)",
+    "aborted": "Aborted!"
+  },
+  "ban": {
+    "specifyUser": "Please specify a user to ban.",
+    "noReason": "None Provided",
+    "sameUser": "I'm so sorry... I can't allow self-harm!",
+    "noBannabled": "Uh! Oh! I can't ban this user. Looks like he's more powerful than I am!",
+    "error": "Oh snap! I couldn't ban the specified user! Reason: {{error}}.",
+    "sucess": "Successfully banned **{{user}}** from this server."
+  },
+  "case": {
+    "noComplaint": "This complaint does not exist.",
+    "noArgs": "You must pick an option wheter to reject it or approve it.",
+    "approved": "Your report with case id **{{caseID}}** has been approved by **{{author}}**.",
+    "reportApproved": "Report with case id **{{caseID}}** has been approved.",
+    "noReason": "You have to specify a reason.",
+    "rejected": "Your report with case id **{{caseID}}** has been rejected by **{{author}}** because **{{reason}}**.",
+    "reportRejected": "Report with case id **{{caseID}}** has been rejected.",
+    "unknownType": "Unknown type."
+  },
+  "check": {
+    "noUser": "You haven't specified any user.",
+    "infractions": "\uD83D\uDEA9 **{{user}}**'s audit contains \\`{{infractions}}\\` infractions in this server."
+  },
+  "clear": {
+    "noReason": "Not specified.",
+    "noAmount": "Please specify an amount of messages to delete.",
+    "error": "Couldn't delete messages because {{error}}.",
+    "sucessUser": "Successfully deleted **{{length}}** of **{{user}}**'s messages!",
+    "mentionUser": "Please mention a user or specify an amount of messages to delete!",
+    "smallerThanOneHundred": "The number must be smaller than 100.",
+    "biggerThanOne": "The number must be bigger than 1.",
+    "sucess": "Successfully deleted **{{amount}}** messsages!"
+  },
+  "define": {
+    "notFound": "Sorry, `{{args}}` was not found.\nplease check name and speeling then try again.",
+    "title": "Dictionary Lookup",
+    "field1": "[Information]:",
+    "field2": "**Word :** {{word}}\n**Type :** {{type}}\n**Definition :**  {{def}}"
+  },
+  "fetch": {
+    "error": "Couldn't look up in discord database for id \\`{{id}}\\` because user does not exist in discord database.",
+    "status": {
+      "online": "Online",
+      "dnd": "Do Not Disturb",
+      "idle": "Idle",
+      "offline": "Offline/Invisible",
+      "true": "Yes",
+      "false": "No"
+    },
+    "bot": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "notPlaying": "Not Playing Anything",
+    "embed": {
+      "fieldName1": "[User]:",
+      "fieldValue1": "▫ Username: {{username}}\n▫ Tag: {{usertag}}\n▫ ID: {{id}}\n▫ Bot: {{bot}}",
+      "fieldName2": "[Presence]:",
+      "fieldValue2": "▫ Game: {{presence}}\n▫ Status: {{status}}",
+      "fieldName3": "[Joined Discord]:",
+      "fieldValue3": "{{time}} ago"
+    }
+  },
+  "forget": {
+    "noUser": "You haven't specified a valid user.",
+    "noReason": "None Provided",
+    "sucess": "Successfully forgot \\`{{warns}}\\` infraction(s) from **{{user}}**'s audit."
+  },
+  "help": {
+    "categories": {
+      "mod": "Moderation - `",
+      "general": "General - `",
+      "settings": "Settings - `",
+      "tools": "Tools - `",
+      "banlist": "Ban List - `",
+      "tags": "Tags - `",
+      "music": "Music - `"
+    },
+    "desc": {
+      "mod": "Commands helping you moderate your server.",
+      "general": "Commands any bot have.",
+      "settings": "Commands help you set up your server. For other features [check dashboad](https://shiber.xyz).",
+      "tools": "Usefull tools that you will most liekly use at some point.",
+      "banlist": "Commands regarding ban list.",
+      "tags": "Server custom commands.\n\nPatreon: [https://patreon.com/MrDioogo](https://patreon.com/MrDioogo)"
+    },
+    "noCommand": "Command/Category/Alias not found."
+  },
+  "ignoredusers": {
+    "add": {
+      "noUser": "You must specify a user to add.",
+      "added": "Added {{user}} to automod ignored users."
+    },
+    "remove": {
+      "noUser": "You must specify a user to remove.",
+      "notFound": "User not found on ignored user list.",
+      "removed": "User has been removed from the ignored list."
+    },
+    "args": "Valid options are `add` or `remove`."
+  },
+  "invite": {
+    "title": "Invite Me!",
+    "info": "Shiber - All-in-one moderation bot.\n- Shiber's Invite Link:  https://discordapp.com/oauth2/authorize?client_id={{id}}&permissions=8&scope=bot\n This link contains Administrator permission which are neccesary for the bot to work properly. We highly disrecommend changing the permissions.\n\n- Support Server Invite Link: https://shiber.xyz/discord\n This link redirects you to the Shiber's Support Server where you can ask for assistance, report bugs or even give us suggestions on what we should add and/or improve."
+  },
+  "ping": {
+    "reply": "Hey, bye! \uD83D\uDC4B"
+  }
+}

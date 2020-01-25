@@ -1,0 +1,17 @@
+Git Command Line Interface Instructions
+
+# Comitting from my local machine
+
+git status
+git add .
+git commit -m '<Message in Here>'
+git push https://github.com/MrDioogo/Shiber master
+
+
+# Getting Code to another machine
+
+git clone https://github.com/MrDioogo/Shiber
+
+# Updating Code from Github
+
+git pull

@@ -1,0 +1,8 @@
+node_modules/
+command_logs.txt
+botbans.json
+.idea/
+README.md
+shard.js
+config.js
+lavalinkNodes.json

@@ -1,0 +1,8 @@
+<%- include('blocks/header', {bot, user, path}) %>
+
+<div class="text-center">
+    <br>List of Sponsors:<br>
+    <img src="<%= bot.guilds.get('546634351740190731').iconURL({size: 128}) %>" style="border-radius: 50%;">
+    <h3><a href="https://discord.gg/YV382UR"><%= bot.guilds.get('546634351740190731').name %></a></h3>
+</div>
+<% include ./blocks/footer %>
