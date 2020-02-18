@@ -167,7 +167,7 @@ class Bot extends Client {
   loadCommand (commandPath, commandName) {
     try {
       const props = new (require(`${commandPath}${path.sep}${commandName}`))(this);
-      this.logger.log(`Loading Command: ${props.help.name}`, "log");
+      //this.logger.log(`Loading Command: ${props.help.name}`, "log");
       props.conf.location = commandPath;
       if (props.init) {
         props.init(this);
