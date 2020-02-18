@@ -16,12 +16,12 @@ module.exports = class {
 - ID: ${guild.id}
 - Created On: ${guild.createdAt}
 
-- Current Server Count: ${this.client.guilds.size}
+- Current Server Count: ${this.client.guilds.cache.size}
       `)
       .setColor("RED")
       .setTimestamp();
 
-    this.client.channels.get(this.client.config.guildLogChannel).send(leaveEmbed);
-    await this.client.user.setActivity(`${this.client.guilds.size} Servers | ${this.client.config.prefix}help`, { type: "WATCHING" });
+    this.client.channels.cache.get(this.client.config.guildLogChannel).send(leaveEmbed);
+    await this.client.user.setActivity(`${this.client.guilds.cache.size} Servers | ${this.client.config.prefix}help`, { type: "WATCHING" });
   }
 };

@@ -14,7 +14,7 @@ module.exports = class {
     const guild = await Settings.findOne({ guildID: role.guild.id });
      if (!guild) return;
      if (guild.serverLogs.toLowerCase() !== "on") return;
-    const logchannel = this.client.channels.get(guild.logsChannel);
+    const logchannel = this.client.channels.cache.get(guild.logsChannel);
      if (!logchannel) return;
     const RoleEmbed = new Discord.MessageEmbed()
       .setColor("GREEN")

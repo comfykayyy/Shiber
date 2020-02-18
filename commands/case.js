@@ -40,7 +40,7 @@ class Case extends Command {
 
       await newBan.save().catch(e => this.client.logger.log(e, "error"));
       await preReports.findOneAndDelete({ caseID: parseInt(args[0]) });
-      this.client.users.get(complaint.reportedByID).send(t("commands:case.approved", { caseID: complaint.caseID, author: message.author.tag }));
+      this.client.users.cache.get(complaint.reportedByID).send(t("commands:case.approved", { caseID: complaint.caseID, author: message.author.tag }));
       const reportedUser = await this.client.users.fetch(complaint.reportedID);
       const reportAuthor = await this.client.users.fetch(complaint.reportedByID);
 
@@ -51,7 +51,7 @@ class Case extends Command {
         .addField("[Moderator]:", `▫ Moderator: ${message.author.tag}\n▫ Moderator ID: ${message.author.id}`)
         .setColor("GREEN")
         .setTimestamp();
-      this.client.channels.get(this.client.config.reportApprovedEmbedChannel).send(approvedEmbed);
+      this.client.channels.cache.get(this.client.config.reportApprovedEmbedChannel).send(approvedEmbed);
 
       reply(t("commands:case.reportApproved", { caseID: complaint.caseID }));
     } else if (args[1].toLowerCase() === "reject") {
@@ -70,7 +70,7 @@ class Case extends Command {
 
       await newAfter.save().catch(e => this.client.logger.log(e, "error"));
       await preReports.findOneAndDelete({ caseID: args[0] });
-      this.client.users.get(complaint.reportedByID).send(t("commands:case.rejected", { caseID: complaint.caseID, author: message.author.tag, reason: reason }));
+      this.client.users.cache.get(complaint.reportedByID).send(t("commands:case.rejected", { caseID: complaint.caseID, author: message.author.tag, reason: reason }));
       const reportedUser = await this.client.users.fetch(complaint.reportedID);
       const reportAuthor = await this.client.users.fetch(complaint.reportedByID);
 
@@ -81,7 +81,7 @@ class Case extends Command {
         .addField("[Moderator]:", `▫ Moderator: ${message.author.tag}\n▫ Moderator ID: ${message.author.id}\nRejection Reason: ${reason}`)
         .setColor("RED")
         .setTimestamp();
-      this.client.channels.get(this.client.config.reportRejectedEmbedChannel).send(rejectedEmbed);
+      this.client.channels.cache.get(this.client.config.reportRejectedEmbedChannel).send(rejectedEmbed);
 
       reply(t("commands:case.reportRejected", { caseID: complaint.caseID }));
     } else {

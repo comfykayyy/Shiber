@@ -17,13 +17,13 @@ module.exports = class {
 - ID: ${guild.id}
 - Created On: ${guild.createdAt}
 
-- Current Server Count: ${this.client.guilds.size}
+- Current Server Count: ${this.client.guilds.cache.size}
       `)
       .setColor("GREEN")
       .setTimestamp();
 
-    this.client.channels.get(this.client.config.guildLogChannel).send(joinEmbed);
-    await this.client.user.setActivity(`${this.client.guilds.size} Servers | ${this.client.config.prefix}help`, { type: "WATCHING" });
+    this.client.channels.cache.get(this.client.config.guildLogChannel).send(joinEmbed);
+    await this.client.user.setActivity(`${this.client.guilds.cache.size} Servers | ${this.client.config.prefix}help`, { type: "WATCHING" });
     const usrs = fs.readFileSync("botbans.json", "utf8");
     if (usrs.includes(guild.owner.id)) return guild.leave();
   }

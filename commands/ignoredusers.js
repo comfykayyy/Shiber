@@ -26,13 +26,13 @@ class ignoredUsers extends Command {
       const option = args[0].toLowerCase();
 
       if (option === "add") {
-        const user = message.mentions.users.first() || this.client.users.get(args[1]);
+        const user = message.mentions.users.first() || this.client.users.cache.get(args[1]);
         if (!user) return reply(t("commands:ignoredusers.add.noUser"));
         settings.ignoredUsers.push(user.id);
         await settings.save().catch(e => this.client.logger.log(e, "error"));
         return reply(t("commands:ignoredusers.add.added", { user: user }));
       } else if (option === "remove") {
-        const user = message.mentions.users.first() || this.client.users.get(args[1]) || args[1];
+        const user = message.mentions.users.first() || this.client.users.cache.get(args[1]) || args[1];
         if (!user) return reply(t("commands:ignoredusers.remove.noUser"));
 
         const index = settings.ignoredUsers.findIndex(i => i === user.id);

@@ -17,7 +17,7 @@ module.exports = class {
     if (!newMessage.guild) return;
     const guild = await Settings.findOne({ guildID: oldMessage.guild.id });
     if (guild.chatLogs.toLowerCase() !== "on") return;
-    const logchannel = this.client.channels.get(guild.logsChannel);
+    const logchannel = this.client.channels.cache.get(guild.logsChannel);
     if (!logchannel) return;
     if (oldMessage.content === newMessage.content) return;
 

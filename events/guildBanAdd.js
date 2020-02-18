@@ -14,7 +14,7 @@ module.exports = class {
     const mguild = await Settings.findOne({ guildID: guild.id });
      if (!mguild) return;
      if (mguild.moderationLogs.toLowerCase() !== "on") return;
-    const logchannel = this.client.channels.get(mguild.logsChannel);
+    const logchannel = this.client.channels.cache.get(mguild.logsChannel);
      if (!logchannel) return;
 
      let entry = await guild.fetchAuditLogs({

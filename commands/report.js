@@ -114,7 +114,7 @@ class Report extends Command {
       .setColor("#36393e")
       .setTimestamp();
 
-    this.client.channels.get(this.client.config.newReportEmbed).send(reportEmbed);
+    this.client.channels.cache.get(this.client.config.newReportEmbed).send(reportEmbed);
     reply(`Report with ID **${complaintID}** has been saved.`);
   }
 }

@@ -25,7 +25,7 @@ class Stats extends Command {
     const m = await reply("<a:pending:527838556153053204> Hold on...");
 
     let users = 0;
-    this.client.guilds.map(g => users += g.memberCount);
+    this.client.guilds.cache.map(g => users += g.memberCount);
 
     const embed = new Discord.MessageEmbed()
       .setTitle("Bot's Statistics")
@@ -35,7 +35,7 @@ class Stats extends Command {
 Memory Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 Uptime: ${time}
 Channel Count: ${this.client.channels.size.toLocaleString()}
-Server Count: ${this.client.guilds.size.toLocaleString()}
+Server Count: ${this.client.guilds.cache.size.toLocaleString()}
 User Count: ${users.toLocaleString()}
 Discord.Js Version: v${version}
 Node.JS Version: ${process.version}

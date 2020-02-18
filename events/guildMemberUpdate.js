@@ -14,7 +14,7 @@ module.exports = class {
      const guild = await Settings.findOne({ guildID: oldMember.guild.id });
      if (!guild) return;
      if (guild.moderationLogs.toLowerCase() !== "on") return;
-     const logchannel = this.client.channels.get(guild.logsChannel);
+     const logchannel = this.client.channels.cache.get(guild.logsChannel);
      if (!logchannel) return;
 
      const NickEmbed = new Discord.MessageEmbed()
@@ -29,7 +29,7 @@ module.exports = class {
      const guild = await Settings.findOne({ guildID: oldMember.guild.id });
      if (!guild) return;
      if (guild.moderationLogs.toLowerCase() !== "on") return;
-     const logchannel = this.client.channels.get(guild.logsChannel);
+     const logchannel = this.client.channels.cache.get(guild.logsChannel);
      if (!logchannel) return;
      const NickEmbed = new Discord.MessageEmbed()
        .setAuthor(newMember.user.tag,newMember.user.displayAvatarURL)

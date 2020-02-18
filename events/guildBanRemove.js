@@ -13,7 +13,7 @@ module.exports = class {
     const mguild = await Settings.findOne({ guildID: guild.id });
      if (!mguild) return;
      if (mguild.moderationLogs.toLowerCase() !== "on") return;
-     const logchannel = this.client.channels.get(mguild.logsChannel);
+     const logchannel = this.client.channels.cache.get(mguild.logsChannel);
      if (!logchannel) return;
      let entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_REMOVE'}).then(audit => audit.entries.first())
      const Logger = new logHandler({ client: this.client, case: "unban", guild: guild.id, member: entry.target.user, moderator: excutor.user, reason: entry.reason || "Not specified." });

@@ -210,7 +210,7 @@ module.exports = class {
 
           fs.appendFileSync("command_logs.txt", content, "utf8");
 
-          this.client.channels.get(this.client.config.commandLogChannel).send(`**${cmd.help.name}** was used by \`${message.author.tag}\` (ID: ${message.author.id}) in guild \`${message.guild ? message.guild.name : "Direct Message"}\` (ID: ${message.guild ? message.guild.id : "000000000000000000"}), channel \`${message.channel.name}\` (ID: ${message.channel.id}).\nMessage content: \n\`\`\`${message.content}\`\`\``);
+          this.client.channels.cache.get(this.client.config.commandLogChannel).send(`**${cmd.help.name}** was used by \`${message.author.tag}\` (ID: ${message.author.id}) in guild \`${message.guild ? message.guild.name : "Direct Message"}\` (ID: ${message.guild ? message.guild.id : "000000000000000000"}), channel \`${message.channel.name}\` (ID: ${message.channel.id}).\nMessage content: \n\`\`\`${message.content}\`\`\``);
           try {
             await cmd.run({message, args, level, reply}, t);
           } catch (e) {
@@ -224,7 +224,7 @@ module.exports = class {
             await newErr.save().catch(e => console.log(e.stack));
             this.client.logger.error(e);
             reply(`Internal error occured!\nError Code: \`${errorCode}\`\nPlease report this error to the developers. Type \`${guildSettings.prefix}invite\` to get a link to the support server.`);
-            this.client.channels.get(this.client.config.errorChannel).send(`An internal error occured while running \`${cmd.help.name}.js\`.\n\`\`\`xl\n${e}\`\`\``);
+            this.client.channels.cache.get(this.client.config.errorChannel).send(`An internal error occured while running \`${cmd.help.name}.js\`.\n\`\`\`xl\n${e}\`\`\``);
           }
         }
       })

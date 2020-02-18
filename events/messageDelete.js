@@ -15,7 +15,7 @@ module.exports = class {
     const guild = await Settings.findOne({ guildID: message.guild.id });
      if (!guild) return;
      if (guild.chatLogs.toLowerCase() !== "on") return;
-    const logchannel = this.client.channels.get(guild.logsChannel);
+    const logchannel = this.client.channels.cache.get(guild.logsChannel);
      if (!logchannel) return;
 
     const DeleteEmbed = new Discord.MessageEmbed()
