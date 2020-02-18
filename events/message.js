@@ -120,7 +120,7 @@ module.exports = class {
           if (message.guild && level < 2) {
             if (message.member && !guildSettings.ignoredUsers.includes(message.author.id)) {
               if (!guildSettings.ignoredChannels.includes(message.channel.id)) {
-                if (!message.member.roles.some(r => guildSettings.ignoredRoles.includes(r.id))) {
+                if (!message.member.roles.cache.cache.some(r => guildSettings.ignoredRoles.includes(r.id))) {
                   automod.run(this.client, message, message.guild.settings);
                 }
               }
@@ -142,11 +142,11 @@ module.exports = class {
             }
             for (const selfrole of guildSettings.selfroles) {
               if (command === selfrole.name) {
-                if (message.member.roles.find(role => role.id === selfrole.ID)) {
-                  message.member.roles.remove(message.guild.roles.find(role => role.id === selfrole.ID));
+                if (message.member.roles.cache.find(role => role.id === selfrole.ID)) {
+                  message.member.roles.cache.remove(message.guild.roles.find(role => role.id === selfrole.ID));
                   return reply(`Removed your **${selfrole.name}** role.`);
                 }
-                message.member.roles.add(message.guild.roles.find(role => role.id === selfrole.ID));
+                message.member.roles.cache.add(message.guild.roles.find(role => role.id === selfrole.ID));
                 return reply(`You got the **${selfrole.name}** role.`);
               }
             }

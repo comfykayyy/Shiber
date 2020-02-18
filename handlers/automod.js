@@ -323,7 +323,7 @@ class Automod {
           }
         }
       };
-      // if (message.member.roles.get(settings.ignoredRole) !== undefined) return;
+      // if (message.member.roles.cache.get(settings.ignoredRole) !== undefined) return;
       if (settings.antiSpam === "on") antiSpam(client, message);
       if (settings.antiInvite === "on") antiInvite(client, message);
       if (settings.antiLinks === "on") antiLink(client, message);
