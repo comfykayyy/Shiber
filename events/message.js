@@ -70,10 +70,10 @@ module.exports = class {
     return new Promise(async (resolve, reject) => {
       i18next.use(translationBackend).init({
         ns: ['commands'],
-        preload: await fs.readdirSync('../locales/'),
+        preload: await fs.readdirSync('./locales/'),
         fallbackLng: 'en-US',
         backend: {
-          loadPath: `../locales/{{lng}}/{{ns}}.json`
+          loadPath: `./locales/{{lng}}/{{ns}}.json`
         },
         interpolation: {
           escapeValue: false
