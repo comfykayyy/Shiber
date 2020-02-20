@@ -2,7 +2,7 @@
 <h1 class="display-3" id="title">Server List:</h1>
 
 <div class="card-columns">
-  <% bot.guilds.forEach(guild => { 
+  <% bot.guilds.cache.forEach(guild => { 
   %>
   
     <div class="card">
@@ -26,7 +26,7 @@
           <% 
           let href, text;
           let enabled;
-          if(bot.guilds.get(guild.id)) {
+          if(bot.guilds.cache.get(guild.id)) {
             href = `/dashboard/${guild.id}`;
             text = "Edit";
             enabled = true;
