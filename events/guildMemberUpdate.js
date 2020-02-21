@@ -25,7 +25,7 @@ module.exports = class {
      logchannel.send(NickEmbed);
   }
 
-  if (oldMember.roles.map(role => role).length !== newMember.roles.map(role => role).length) {
+  if (oldMember.roles.cache.map(role => role).length !== newMember.roles.cache.map(role => role).length) {
      const guild = await Settings.findOne({ guildID: oldMember.guild.id });
      if (!guild) return;
      if (guild.moderationLogs.toLowerCase() !== "on") return;
