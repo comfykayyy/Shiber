@@ -34,7 +34,7 @@ module.exports = class {
      const NickEmbed = new Discord.MessageEmbed()
        .setAuthor(newMember.user.tag,newMember.user.displayAvatarURL)
        .setColor("BLUE")
-       .setDescription(`✏ Roles Update\n**Old Roles**: ${oldMember.roles.map(role => role)}\n**New Roles**: ${newMember.roles.map(role => role)}`)
+       .setDescription(`✏ Roles Update\n**Old Roles**: ${oldMember.roles.cache.map(role => role)}\n**New Roles**: ${newMember.roles.cache.map(role => role)}`)
        .setTimestamp();
      logchannel.send(NickEmbed);
    }
