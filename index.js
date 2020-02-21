@@ -203,11 +203,6 @@ const client = new Bot({
   fetchAllMembers: true
 });
 
-const dbl = new DBL(config.dblToken, client)
-dbl.on("posted", () => {
-  console.log("Connected to DBL")
-})
-
 const init = async () => {
   klaw("./commands").on("data", (item) => {
     const cmdFile = path.parse(item.path);

@@ -14,19 +14,6 @@ module.exports = class {
 
     this.client.lavalinkManager = new lavalinkManager(this.client)
 
-    const dbl = new DBL(config.dblToken, this.client)
-    dbl.on('posted', () => {
-      console.log('Server count posted!');
-    })
-
-    dbl.on('error', e => {
-      console.log(`Oops! ${e}`);
-    })
-
-    setInterval(() => {
-      dbl.postStats(this.client.guilds.size, this.client.shards.Id, this.client.shards.total);
-    }, 1800000);
-
     this.client.appInfo = await this.client.fetchApplication();
     setInterval( async () => {
       this.client.appInfo = await this.client.fetchApplication();
