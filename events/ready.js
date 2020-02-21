@@ -23,6 +23,10 @@ module.exports = class {
       console.log(`Oops! ${e}`);
     })
 
+    setInterval(() => {
+      dbl.postStats(this.client.guilds.size, this.client.shards.Id, this.client.shards.total);
+    }, 1800000);
+
     this.client.appInfo = await this.client.fetchApplication();
     setInterval( async () => {
       this.client.appInfo = await this.client.fetchApplication();
