@@ -6,9 +6,7 @@ const readdir = promisify(require("fs").readdir);
 const klaw = require("klaw");
 const path = require("path");
 const Settings = require("./models/settings.js");
-const DBL = require("dblapi.js")
 const config = require("./config")
-
 class Bot extends Client {
   constructor (options) {
     super(options);

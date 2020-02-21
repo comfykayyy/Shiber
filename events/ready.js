@@ -2,7 +2,6 @@ const Discord = require("discord.js"); // eslint-disable-line no-unused-vars
 const request = require("request");
 const fs = require("fs");
 const lavalinkManager = require("../lavalink/lavalinkManager")
-const DBL = require("dblapi.js")
 const config = require("../config")
 
 module.exports = class {
