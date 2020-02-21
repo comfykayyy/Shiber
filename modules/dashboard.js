@@ -164,10 +164,10 @@ module.exports = (client) => {
 
   app.get("/stats", (req, res) => {
     const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-    const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
+    const members = client.guilds.cache.reduce((p, c) => p + c.memberCount, 0);
     const textChannels = client.channels.filter(c => c.type === "text").size;
     const voiceChannels = client.channels.filter(c => c.type === "voice").size;
-    const guilds = client.guilds.size;
+    const guilds = client.guilds.cache.size;
     renderTemplate(res, req, "stats.ejs", {
       stats: {
         servers: guilds,
@@ -193,13 +193,13 @@ module.exports = (client) => {
   });
 
   app.get("/members/:guildID", checkAuth, async (req, res) => {
-    const guild = client.guilds.get(req.params.guildID);
+    const guild = client.guilds.cache.get(req.params.guildID);
     if (!guild) return res.redirect("/dashboard");
     renderTemplate(res, req, "guild/members.ejs", { members: guild.members });
   });
 
   app.get("/dashboard/:guildID", checkAuth, async (req, res) => {
-    const guild = client.guilds.get(req.params.guildID);
+    const guild = client.guilds.cache.get(req.params.guildID);
     if (!guild) return res.redirect("/dashboard");
     const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
     if (!isManaged && !req.session.isAdmin) res.redirect("/dashboard");
@@ -214,7 +214,7 @@ module.exports = (client) => {
   });
 
   app.get("/stats/:guildID", checkAuth, async (req, res) => {
-    const guild = client.guilds.get(req.params.guildID);
+    const guild = client.guilds.cache.get(req.params.guildID);
     if (!guild) return res.redirect("/dashboard");
     const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
     if (!isManaged && !req.session.isAdmin) res.redirect("/");
@@ -263,7 +263,7 @@ module.exports = (client) => {
     let usr;
 
     try {
-      usr = await client.users.fetch(id);
+      usr = await client.users.cache.fetch(id);
     } catch (e) {
       return renderTemplate(res, req, "report.ejs", { error: "Invalid user id specified.", success: null });
     }
@@ -312,7 +312,7 @@ module.exports = (client) => {
   });
 
   app.post("/dashboard/:guildID", checkAuth, async (req, res) => {
-    const guild = client.guilds.get(req.params.guildID);
+    const guild = client.guilds.cache.get(req.params.guildID);
     if (!guild) return res.redirect("/dashboard");
     const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
     if (!isManaged && !req.session.isAdmin) res.redirect("/");
@@ -348,7 +348,7 @@ module.exports = (client) => {
 
   app.get("/admin/:guildID/leave", checkAuth, async (req, res) => {
     if (!req.session.isAdmin) res.redirect("/dashboard");
-    const guild = client.guilds.get(req.params.guildID);
+    const guild = client.guilds.cache.get(req.params.guildID);
     if (!guild) return res.status(404).redirect("/admin");
     await guild.leave();
     res.redirect("/admin");
@@ -356,11 +356,11 @@ module.exports = (client) => {
 
   app.get("/admin/:guildID/warp", checkAuth, async (req, res) => {
     if (!req.session.isAdmin) res.redirect("/dashboard");
-    const guild = client.guilds.get(req.params.guildID);
+    const guild = client.guilds.cache.get(req.params.guildID);
     if (!guild) return res.status(404).redirect("/admin");
     const channel = guild.channels.filter(c => c.type === "text").first();
-    const invite = await channel.createInvite().catch(e => client.users.get(req.user.id).send(`Couldn't send an invite because ${e}`));
-    client.users.get(req.user.id).send(`Invite Generated to \`${guild.name}\` is https://discord.gg/${invite.code}/.`);
+    const invite = await channel.createInvite().catch(e => client.users.cache.get(req.user.id).send(`Couldn't send an invite because ${e}`));
+    client.users.cache.get(req.user.id).send(`Invite Generated to \`${guild.name}\` is https://discord.gg/${invite.code}/.`);
     res.redirect("/admin");
   });
 
