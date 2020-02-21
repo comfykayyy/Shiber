@@ -120,7 +120,7 @@ module.exports = class {
           if (message.guild && level < 2) {
             if (message.member && !guildSettings.ignoredUsers.includes(message.author.id)) {
               if (!guildSettings.ignoredChannels.includes(message.channel.id)) {
-                if (!message.member.roles.cache.cache.some(r => guildSettings.ignoredRoles.includes(r.id))) {
+                if (!message.member.roles.cache.some(r => guildSettings.ignoredRoles.includes(r.id))) {
                   automod.run(this.client, message, message.guild.settings);
                 }
               }
