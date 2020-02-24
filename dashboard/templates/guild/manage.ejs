@@ -119,7 +119,7 @@ input:checked + .slider:before {
 			<option data-tokens="none selected" value="">(none)</option>
 			<%
 				const rols2 = guild.roles;
-				rols2.forEach(r => {
+				rols2.cache.forEach(r => {
 			%>
 				<option data-tokens="<%= r.name %>" value="<%= r.id %>" <%= guild.sets.adminRole === r.id ? "selected" : "" %>>@ <%= r.name %>
 			<%
@@ -134,7 +134,7 @@ input:checked + .slider:before {
 			<option data-tokens="none selected" value="">(none)</option>
 			<%
 				const rols3 = guild.roles;
-				rols3.forEach(jr => {
+				rols3.cache.forEach(jr => {
 			%>
 				<option data-tokens="<%= jr.name %>" value="<%= jr.id %>" <%= guild.sets.joinrole === jr.id ? "selected" : "" %>>@ <%= jr.name %>
 			<%
@@ -151,7 +151,7 @@ input:checked + .slider:before {
 				<select name="mod-channel" class="selectpicker" data-live-search="true">
 				<option data-tokens="none selected" value="">(none)</option>
 				<%
-					const chens = guild.channels.filter(c => c.type === "text");
+					const chens = guild.cache.channels.cache.filter(c => c.type === "text");
 					chens.forEach(c => {
 				%>
 					<option data-tokens="<%= c.name %>" value="<%= c.id %>" <%= guild.sets.logsChannel === c.id ? "selected" : "" %>># <%= c.name %>
@@ -210,7 +210,7 @@ input:checked + .slider:before {
 				<select name="checkpointlog" class="selectpicker" data-live-search="true" >
 				<option data-tokens="none selected" value="">(none)</option>
 				<%
-					const checkLog = guild.channels.filter(c => c.type === "text");
+					const checkLog = guild.channels.cache.filter(c => c.type === "text");
 					checkLog.forEach(c => {
 				%>
 					<option data-tokens="<%= c.name %>" value="<%= c.id %>" <%= guild.sets.checkpoint_logChannel === c.id ? "selected" : "" %>># <%= c.name %>
@@ -285,7 +285,7 @@ input:checked + .slider:before {
 			<p><strong>Ignored Channels:</strong></p>
 			<select name="ignored-channels" class="selectpicker" data-live-search="true" multiple>
 			<%
-        const channels = guild.channels.filter(c => c.type === "text");
+        const channels = guild.channels.cache.filter(c => c.type === "text");
         channels.forEach(c => {
       %>
 				<option data-tokens="<%= c.name %>" value="<%= c.id %>" <%= guild.sets.ignoredChannels.includes(c.id) ? "selected" : "" %>># <%= c.name %>
