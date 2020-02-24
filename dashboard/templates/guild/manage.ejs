@@ -104,7 +104,7 @@ input:checked + .slider:before {
 			<option data-tokens="none selected" value="">(none)</option>
 			<%
 				const rols = guild.roles;
-				rols.forEach(r => {
+				rols.cache.forEach(r => {
 			%>
 				<option data-tokens="<%= r.name %>" value="<%= r.id %>" <%= guild.sets.modRole === r.id ? "selected" : "" %>>@ <%= r.name %>
 			<%
