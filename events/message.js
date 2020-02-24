@@ -21,7 +21,7 @@ module.exports = class {
   async run (message) {
     function getDmLvl (message, client) { if (message.author.id === client.appInfo.owner.id) { return 10; } else if (client.config.admins.includes(message.author.id)) { return 9; } else { return 0; } }
     const reply = (c) => message.channel.send(c);
-    const guildSettings = message.channel.type === "text" ? await Settings.findOne({ guildID: message.guild.id }) : { prefix: "?" };
+    const guildSettings = message.channel.type === "text" ? await Settings.findOne({ guildID: message.guild.id }) : { prefix: "s." };
     if (message.guild) message.guild.settings = guildSettings;
     if (!guildSettings && message.guild) {
       const newSettings = new Settings({
