@@ -219,7 +219,7 @@ module.exports = class {
               errCode: errorCode,
               err: e,
               errTimestamp: message.createdAtTimestamp,
-              errPath: `/home/mrdioogo/ftp/public_html/Shiber/commands/${cmd.help.name}.js`
+              errPath: `/home/mrdioogo/Shiber/commands/${cmd.help.name}.js`
             });
             await newErr.save().catch(e => console.log(e.stack));
             this.client.logger.error(e);
