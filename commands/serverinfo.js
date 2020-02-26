@@ -23,18 +23,18 @@ class Serverinfo extends Command {
   
     const guildmessageServerInfo = message.guild;
     const createdAtServerInfo = moment(message.guild.createdAt).format("MMMM Do YYYY, h:mm:ss a");
-    const channelsServerInfo = message.guild.channels.size;
+    const channelsServerInfo = message.guild.channels.cache.size;
     const ownerServerInfo = message.guild.owner.user.tag;
     const memberCountServerInfo = message.guild.memberCount;
-    const BotCountServerInfo = message.guild.members.filter(member => member.user.bot).size;
+    const BotCountServerInfo = message.guild.members.cache.filter(member => member.user.bot).size;
     const largeServerInfo = message.guild.large;
     const regionServerInfo = message.guild.region;
-    const rolesinfo =  message.guild.roles.size;
+    const rolesinfo =  message.guild.roles.cache.size;
     const VerificationLevelInfo = message.guild.verificationLevel;
     const VerifiedInfo = message.guild.verified;
-    const AdminsInfo = message.guild.members.filter(member => member.hasPermission("ADMINISTRATOR")).size;
-    const EmojisInfo = message.guild.emojis.size;
-    const afkServerInfo = message.guild.channels.get(message.guild.afkChannelID) === undefined ? "None" : message.guild.channels.get(guildmessageServerInfo.afkChannelID).name;
+    const AdminsInfo = message.guild.members.cache.filter(member => member.hasPermission("ADMINISTRATOR")).size;
+    const EmojisInfo = message.guild.emojis.cache.size;
+    const afkServerInfo = message.guild.channels.cache.get(message.guild.afkChannelID) === undefined ? "None" : message.guild.channels.get(guildmessageServerInfo.afkChannelID).name;
 
     message.channel.send({embed: {
       color: 3447003,
