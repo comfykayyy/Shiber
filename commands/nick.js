@@ -19,7 +19,7 @@ class Nick extends Command {
   }
 
   async run (message,args, level, reply) { // eslint-disable-line no-unused-vars
-    if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) return message.channel.send("Please give the bot `MANAGE_NICKNAMES` permission!");
+    if (!message.guild.cache.me.hasPermission("MANAGE_NICKNAMES")) return message.channel.send("Please give the bot `MANAGE_NICKNAMES` permission!");
     if (!message.mentions.members.first()) return message.channel.send("Please mention a user.");
     if (message.mentions.members.first().hasPermission("ADMINISTRATOR")) return message.channel.send("This user has admin permissions.");
     const newnick = args.slice(1).join(" ");
