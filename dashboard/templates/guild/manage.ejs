@@ -299,7 +299,7 @@ input:checked + .slider:before {
 		  <p><strong>Ignored Roles:</strong></p>
 			<select name="ignored-roles" class="selectpicker" data-live-search="true" multiple>
 			<%
-        const roles = guild.roles;
+        const roles = guild.cache.roles;
         roles.forEach(r => {
 			%>
 			  <option data-tokens="<%= r.name %>" value="<%= r.id %>" <%= guild.sets.ignoredRoles.includes(r.id) ? "selected" : "" %>>@ <%= r.name %>
