@@ -151,7 +151,7 @@ input:checked + .slider:before {
 				<select name="mod-channel" class="selectpicker" data-live-search="true">
 				<option data-tokens="none selected" value="">(none)</option>
 				<%
-					const chens = guild.cache.channels.cache.filter(c => c.type === "text");
+					const chens = guild.channels.cache.filter(c => c.type === "text");
 					chens.forEach(c => {
 				%>
 					<option data-tokens="<%= c.name %>" value="<%= c.id %>" <%= guild.sets.logsChannel === c.id ? "selected" : "" %>># <%= c.name %>
